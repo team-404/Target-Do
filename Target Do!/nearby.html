@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Do! - Nearby</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <link rel="shortcut icon" href="img/favicon.ico" />
+        <link href="content/styles.css" rel="stylesheet" />
+        <style>
+          #map_canvas {
+            width: 500px;
+            height: 400px;
+          }
+        </style>
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+    
+    <script>
+  function initialize() {
+    var mapCanvas = document.getElementById('map_canvas');
+    var myLatlng = new google.maps.LatLng(44.9720684,-93.2465638);
+    var mapOptions = {
+      zoom: 17,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+    var image = "img/targetSymbolTransparent2.png";
+    var marker = new google.maps.Marker({
+        position:myLatlng,
+        map:map,
+        icon: image,
+        title: 'Target'
+    });
+  }
+  
+  function changeCoord(lat, lng) {
+    var mapCanvas = document.getElementById('map_canvas');
+    var myLatlng = new google.maps.LatLng(lat, lng);
+    var mapOptions = {
+      zoom: 17,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+    var image = "img/targetSymbolTransparent2.png";
+    var marker = new google.maps.Marker({
+        position:myLatlng,
+        map:map,
+        icon: image,
+        title: 'Target'
+    });
+  }
+  
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+	</head>
+	<body>
+		<div id="wholepage">
+        <div id="left_half" class="sameh">
+                <div id="logo">
+                    <img src="img/largeLogo.png" />
+                </div>
+				<div id="user">
+					<a href="user.html"><img src="img/profile-pic.jpg" /></a>
+					<div id="user_info">
+						<a href="user.html" id="user_name">John Smith</a><br/>
+						<a href="points.html" id="points">Points: 404</a>
+					</div>
+				</div>
+				<div class="side_link"><a href="index.html">
+					<p>News Feed</p>
+				</a></div>
+				<div class="side_link"><a href="nearby.html">
+					<p>Nearby</p>
+				</a></div>
+				<div class="side_link"><a href="org.html">
+					<p>Organizations</p>
+				</a></div>
+				<div class="side_link" id="leaderboards">
+					<p>Weekly | Monthly | All-time</p>
+					<div class="person">
+						<a href="#"><img src="img/gold.png" /></a>
+						<a href="#"><p>Becky Mathis - 43 pts</p></a>
+					</div>
+					<div class="person">
+						<a href="#"><img src="img/silver.png" /></a>
+						<a href="#"><p>Isabel Bailey - 38 pts</p></a>
+					</div><div class="person">
+						<a href="#"><img src="img/bronze.png" /></a>
+						<a href="#"><p>Abel Parsons - 27 pts</p></a>
+					</div>
+				</div>
+				<div id="bottomleft">
+					<div id="logout">
+						<p>Logout</p>
+					</div>
+					<div id="settings">
+						<p>Settings</p>
+					</div>
+				</div>
+			</div>
+			<div id="right_half" class="sameh">   
+                <div style="width: 70%; margin: 0 auto; clear: both;">
+                    <table width='100%'>
+                        <tr>
+                            <td width='120px'><b><font size="4">Search Site:</font></b></td>
+                            <td><input type="text" name="orgs" id="autocomplete-ajax" style="width: 100%; border-width: 5px;"/></td>
+                        </tr>
+                    </table>
+                </div>
+                <script type="text/javascript" src="scripts/jquery-1.8.2.min.js"></script>
+                <script type="text/javascript" src="scripts/jquery.mockjax.js"></script>
+                <script type="text/javascript" src="src/jquery.autocomplete.js"></script>
+                <script type="text/javascript" src="scripts/orgs.js"></script>
+                <script type="text/javascript" src="scripts/demo.js"></script>
+                <script type="text/javascript" src="scripts/json.js"></script>
+                <script type="text/javascript" src="scripts/cor.js"></script>
+                <script type="text/javascript" src="scripts/location.js"></script>
+                <script type="text/javascript" src="scripts/objects.js"></script>
+                <script type="text/javascript" src="scripts/product.js"></script>
+                <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+                <hr width = '90%'>
+                <font size="4">
+                <table style="margin: 0px auto">
+                <tr><td>
+                <u>Nearby Target Locations</u>
+                <ol>
+                    <li><b><p id="targetname1">Target of Twin Cities</b> <button type="button" onclick="changeCoord()">Map</button></p>
+                        <p id="targetaddr1">1234 Memory Lane, Minneapolis, MN 54000</p>
+                    </li>
+                    <li><b><p id="targetname2">Target of Twin Cities</b> <button type="button" onclick="changeCoord()">Map</button></p>
+                        <p id="targetaddr2">1234 Memory Lane, Minneapolis, MN 54000</p>
+                    </li>
+                    <li><b><p id="targetname3">Target of Twin Cities</b> <button type="button" onclick="changeCoord()">Map</button></p>
+                        <p id="targetaddr3">1234 Memory Lane, Minneapolis, MN 54000</p>
+                    </li>
+                </ol>
+                </td>
+                <td>
+                <div id="map_canvas"></div>
+                </td>
+                </tr>
+                </table>
+                <table width="70%" style="margin: 0px auto"><tr><td colspan="3"><BR>
+                <u>Suggested Nearby Product Activities</u><BR>
+                <i>Help out the following nearby organizations:</i>
+                </td></tr>
+                <tr>
+                    <td width="200px"><center><b><p id="item1name">Dog Bowl</p></b>
+                    <p><i>Requested By <a href="org.html">Animal Humane Society</a></i></p>
+                    <a id="item1link"><img id="item1img" height="100px" width="100px" src="img/targetSymbol.png"></a><BR>
+                    <u>Buy at Target for <span id="item1price">$5.99</span></u>
+                    </center></td>
+                    <td width="200px"><center><b><p id="item2name">Dog Bowl</p></b>
+                    <p><i>Requested By <a href="org.html">Animal Humane Society</a></i></p>
+                    <a id="item2link"><img id="item2img" height="100px" width="100px" src="img/targetSymbol.png"></a><BR>
+                    <u>Buy at Target for <span id="item2price">$5.99</span></u>
+                    </center></td>
+                    <td width="200px"><center><b><p id="item3name">Dog Bowl</p></b>
+                    <p><i>Requested By <a href="org.html">Animal Humane Society</a></i></p>
+                    <a id="item3link"><img id="item3img" height="100px" width="100px" src="img/targetSymbol.png"></a><BR>
+                    <u>Buy at Target for <span id="item3price">$5.99</span></u>
+                    </center></td>
+                </tr></td>
+                </table>
+                </font>
+				<div id="footer">
+					<p>Powered by <a href="http://www.target.com/" target="new"><img src="img/target-logo.png" /></a></p>
+				</div>
+			</div>
+		</div>
+		<script >
+            getMyLocation();
+            nearbyStores();
+        </script>
+	</body>
+</html>
